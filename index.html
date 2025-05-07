@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+</head>
+<body>
+  <form onsubmit="return realizarLogin(event)">
+    <div>
+      <label for="Login">Nome:</label>
+      <input type="text" placeholder="Digite seu nome" id="Login" />
+    </div>
+    <br />
+    <div>
+      <label for="senha">Senha:</label>
+      <input type="password" placeholder="Digite sua senha" id="senha" />
+    </div>
+    <br /><br />
+    <div>
+      <button type="submit">Login</button>
+    </div>
+  </form>
+
+  <script>
+    function realizarLogin(event) {
+      event.preventDefault(); // Impede o envio do formulário e recarregamento da página
+
+      const login = document.getElementById('Login').value;
+      const senha = document.getElementById('senha').value;
+
+      if (login === 'admin' && senha === 'admin') {
+        window.location.href = 'home.html';
+      } else {
+        alert('Login ou senha incorretos!');
+      }
+
+      return false; // Garante que o form não envie
+    }
+  </script>
+</body>
+</html>
+
+Chopin1810#
