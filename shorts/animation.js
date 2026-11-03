@@ -127,10 +127,10 @@ function hud(v, pp) {
   return `<g transform="translate(0 ${f((1 - pp) * -220)})" opacity="${f(pp)}">${g}</g>`;
 }
 const hudVals = t => ({
-  a: kf(t, [[8.6, 1], [16, 1], [17, .45], [20.8, .45], [22, 1]]),
-  c: kf(t, [[8.6, 1], [16, .85], [23, .8], [26, .06]]),
-  e: kf(t, [[8.6, 1], [10.5, 1], [13, .4], [22, .3]]),
-  m: kf(t, [[8.6, 1], [22, .85], [28, .3]]),
+  a: kf(t, [[8.6, 1], [17, 1], [18.2, .45], [24.4, .45], [25.6, 1]]),
+  c: kf(t, [[8.6, 1], [17, .85], [28, .8], [31.5, .06]]),
+  e: kf(t, [[8.6, 1], [10.5, 1], [13.5, .4], [24, .3]]),
+  m: kf(t, [[8.6, 1], [24, .85], [32, .3]]),
 });
 
 // ---- cenas (tl = tempo local) ----
@@ -162,13 +162,13 @@ function sC(tl) {
 }
 function box(x, y, w, h, t, c, sc) { return S(x, y, sc, rr(x - w / 2, y - h / 2, w, h, 26, c) + txt(x, y + 17, t, 48)); }
 function sD(tl) {
-  if (tl < 3) {
+  if (tl < 3.9) {
     const p = easeIO(prog(tl, .5, 1.9));
     let o = glow(300, 400, 500, "yl", .12 * (1 - p)) + city(p) + rr(0, 1540, W, 400, 0, DEEP);
     o += label(300, 400, "DIA 1", ORG, 76, 0, pop(tl, .1, .4)) + label(540, 540, "SEM REDE", EMBER, 62, 0, pop(tl, 2, .4));
-    return `<g transform="translate(${f(-easeIO(prog(tl, 2.7, .3)) * 1080)} 0)">${o}</g>`;
+    return `<g transform="translate(${f(-easeIO(prog(tl, 3.6, .3)) * 1080)} 0)">${o}</g>`;
   }
-  const l = tl - 3, slide = (1 - easeOut(prog(l, 0, .35))) * 1080;
+  const l = tl - 3.9, slide = (1 - easeOut(prog(l, 0, .35))) * 1080;
   let o = "";
   const bx = [[430, "SOL", ORG, .2, 440], [650, "PAINEL", ROYAL, .45, 440], [870, "INVERSOR", VIOL, .7, 480], [1110, "CASA", MAG, .95, 440]];
   bx.forEach(([y, t, c, a, w]) => { o += box(540, y, w, 130, t, c, pop(l, a, .4)); });
@@ -180,9 +180,10 @@ function sD(tl) {
   o += label(540, 1320, "SEM REDE, SEM ENERGIA", EMBER, 50, 0, pop(l, 1.6, .4));
   return `<g transform="translate(${f(slide)} 0)">${o}</g>`;
 }
-function tentativa(tl) { return clamp(prog(tl, .4, 4.4) * 14, 0, 13.999); }
+const OK = 7.5; // instante do sucesso na cena E (narração: "na décima quarta, funciona")
+function tentativa(tl) { return clamp(prog(tl, .5, 6.9) * 14, 0, 13.999); }
 function sE(tl) {
-  const att = tentativa(tl), n = tl >= 4.9 ? 14 : 1 + Math.floor(att), fr = att % 1, ok = tl >= 4.9;
+  const att = tentativa(tl), n = tl >= OK ? 14 : 1 + Math.floor(att), fr = att % 1, ok = tl >= OK;
   let o = glow(700, 1250, 500, "or", ok ? .35 : .12);
   // sticks e chama de cada tentativa
   if (!ok) {
@@ -191,42 +192,42 @@ function sE(tl) {
     else for (let i = 0; i < 4; i++) { const q = (fr - .6) / .4; o += circ(690 + i * 22, 1290 - q * 140 - i * 40, 22 + i * 8, LILAC, f(.55 * (1 - q) * (1 - i * .15))); }
   }
   // contador
-  const pulse = ok ? 1 + .15 * Math.max(0, 1 - prog(tl, 4.9, .4) * 2) : 1 + .3 * Math.max(0, 1 - fr * 5);
+  const pulse = ok ? 1 + .15 * Math.max(0, 1 - prog(tl, OK, .4) * 2) : 1 + .3 * Math.max(0, 1 - fr * 5);
   o += label(540, 400, "TENTATIVA", ORG, 54);
   o += rr(340, 470, 400, 300, 56, NIGHT, .75) + S(540, 660, pulse, txt(540, 690, String(n), 190, ok ? MINT : YEL));
   if (ok) {
-    const r = prog(tl, 4.9, .9), rs = 160 + 380 * easeOut(r);
+    const r = prog(tl, OK, .9), rs = 160 + 380 * easeOut(r);
     for (let i = 0; i < 12; i++) { const a = i * Math.PI / 6; o += line(700 + Math.cos(a) * rs, 1250 + Math.sin(a) * rs, 700 + Math.cos(a) * (rs + 150), 1250 + Math.sin(a) * (rs + 150), "#fff", 10, `opacity="${f(1 - r)}"`); }
-    o += flame(700, 1360, 100 * Math.min(1, pop(tl, 4.9, .5)), tl);
-    const pot = easeOut(prog(tl, 5.5, .5)), py = (1 - pot) * -260;
+    o += flame(700, 1360, 100 * Math.min(1, pop(tl, OK, .5)), tl);
+    const pot = easeOut(prog(tl, OK + .6, .5)), py = (1 - pot) * -260;
     o += `<g transform="translate(0 ${f(py)})" opacity="${f(pot)}">` + rr(520, 1080, 360, 200, 60, "#30535A") + rr(490, 1070, 420, 34, 17, LILAC) + rr(900, 1130, 90, 30, 15, "#30535A") + rr(410, 1130, 90, 30, 15, "#30535A") + rr(540, 1090, 320, 26, 13, CYL);
     for (let i = 0; i < 6; i++) { const q = (tl * .9 + i / 6) % 1; o += circ(560 + i * 55 + Math.sin(tl * 3 + i) * 8, 1040 - q * 110, 12 + (i % 2) * 8, CYW, f((1 - q) * .7)); }
     o += "</g>";
-    o += label(700, 940, "+1 PERSISTÊNCIA", MINT, 52, 0, pop(tl, 5.8, .4));
+    o += label(740, 940, "+1 PERSISTÊNCIA", MINT, 52, 0, pop(tl, OK + .9, .4));
   }
   const arm = ok ? -150 : -40 + Math.sin(tl * 9) * 14;
   o += teo(250, 1440 + bob(tl, 4), 1.0, { mood: ok ? "happy" : "sad", aL: 40 + Math.sin(tl * 9) * 10, aR: arm, blink: blinkAt(tl), look: ok ? 0 : 8 });
   return o;
 }
 function sF(tl) {
-  if (tl < 2.6) {
+  if (tl < 2.0) {
     let o = [700, 1010].map(y => rr(120, y, 840, 30, 12, "#3a6a70")).join("");
     [[250, 650], [410, 650], [570, 650], [730, 650], [330, 960], [490, 960], [650, 960], [810, 960]].forEach(([x, y], i) => {
-      const st = .25 + i * .22, dt = Math.max(0, tl - st), fall = .5 * 2600 * dt * dt;
+      const st = .1 + i * .14, dt = Math.max(0, tl - st), fall = .5 * 2600 * dt * dt;
       if (y + fall < 1900) o += can(x, y + fall, 1.2, dt * 220 * (i % 2 ? 1 : -1), i % 3 === 0 ? CYW : i % 3 === 1 ? LILAC : ORG);
     });
     o += circ(540, 1320, 130, LILAC) + circ(540, 1320, 88, "#fff", .8);
     o += label(540, 420, "SEMANA 2", ORG, 66, 0, pop(tl, .1, .4));
-    return `<g transform="translate(${f(-easeIO(prog(tl, 2.3, .3)) * 1080)} 0)">${o}</g>`;
+    return `<g transform="translate(${f(-easeIO(prog(tl, 1.7, .3)) * 1080)} 0)">${o}</g>`;
   }
-  const l = tl - 2.6, slide = (1 - easeOut(prog(l, 0, .35))) * 1080;
+  const l = tl - 2.0, slide = (1 - easeOut(prog(l, 0, .35))) * 1080;
   let o = rr(0, 1250, W, 400, 0, PURP) + rr(0, 1240, W, 22, 0, VIOL);
   [[190, 0, "SEM 1"], [430, 1, "SEM 3"], [670, 2, "SEM 6"], [910, 4, "SEM 9"]].forEach(([x, st, t], i) => {
-    const g = prog(l, .3 + i * .5, .6), wilt = st === 4 ? easeIO(prog(l, 2.4, .8)) : 0;
-    o += sprout(x, 1240, 1.2 * easeOut(g), st, wilt) + label(x, 1350, t, st === 4 && wilt > .5 ? EMBER : ROYAL, 40, 0, pop(l, .3 + i * .5, .4));
+    const g = prog(l, .2 + i * .4, .6), wilt = st === 4 ? easeIO(prog(l, 1.6, .7)) : 0;
+    o += sprout(x, 1240, 1.2 * easeOut(g), st, wilt) + label(x, 1350, t, st === 4 && wilt > .5 ? EMBER : ROYAL, 40, 0, pop(l, .2 + i * .4, .4));
   });
   o += label(540, 420, "A HORTA DEMORA", MINT, 62, 0, pop(l, .1, .4));
-  o += S(910, 1000, pop(l, 3.2, .4), xmark(910, 1000, 55, EMBER, 22));
+  o += S(910, 1000, pop(l, 2.2, .4), xmark(910, 1000, 55, EMBER, 22));
   return `<g transform="translate(${f(slide)} 0)">${o}</g>`;
 }
 function sG(tl) {
@@ -257,15 +258,15 @@ function sH(tl) {
 }
 function sI(tl) {
   let o = glow(540, 900, 700, "mt", .2) + label(540, 330, "ESTIMATIVA DO ROTEIRO, NÃO É ESTUDO", NIGHT, 32, 0, pop(tl, .1, .4));
-  const w1 = 840 * .25 * back(prog(tl, .4, .8)), w2 = 840 * .88 * back(prog(tl, 1.4, 1.1));
+  const w1 = 840 * .25 * back(prog(tl, .4, .8)), w2 = 840 * .88 * back(prog(tl, 2.3, 1.1));
   o += txt(120, 560, "SOZINHO", 62, NIGHT, "start") + rr(120, 600, Math.max(20, w1), 120, 60, ORG);
   o += txt(120, 860, "EM GRUPO", 62, NIGHT, "start") + rr(120, 900, Math.max(20, w2), 120, 60, MINT);
-  o += glow(120 + w2, 960, 150, "mt", .6 * prog(tl, 1.4, 1.1));
+  o += glow(120 + w2, 960, 150, "mt", .6 * prog(tl, 2.3, 1.1));
   o += teo(540, 1450 + bob(tl, 5), .7, { mood: "happy", aL: 20, aR: -150 + Math.sin(tl * 5) * 10, blink: blinkAt(tl, 2) });
   return o;
 }
 function sJ(tl, t) {
-  const sunY = lerp(1250, 930, easeOut(prog(tl, 0, 3)));
+  const sunY = lerp(1250, 930, easeOut(prog(tl, 0, 5)));
   let o = glow(800, sunY, 420, "yl", .9) + circ(800, sunY, 120, YEL) + circ(800, sunY, 94, "#FCF4E3", .6);
   for (const [x, s] of [[100, 1], [330, 1.4], [600, .9], [860, 1.3], [1010, 1]]) o += `<g transform="translate(${x} 1470) scale(${s})">${rr(-18, -150, 36, 150, 14, "#1d3a40")}${circ(0, -210, 90, "#25454b")}${circ(-40, -170, 60, "#2a5058")}${circ(50, -175, 55, "#2a5058")}</g>`;
   o += rr(0, 1450, W, 500, 0, FOR1);
@@ -273,18 +274,18 @@ function sJ(tl, t) {
   o += teo(330, 1470 + bob(tl, 5), 1.1, { mood: "happy", aL: 20, aR: -85 + Math.sin(tl * 4) * 5, blink: blinkAt(tl, 1) });
   const L = (y, s, c, a) => `<g transform="translate(0 ${f((1 - clamp(pop(tl, a, .5), 0, 1)) * 40)})" opacity="${f(clamp(pop(tl, a, .5), 0, 1))}">${txt(540, y, s, 108, c)}</g>`;
   o += L(430, "VOCÊ SABE", "#fff", .2) + L(555, "ACENDER", YEL, .6) + L(680, "UM FOGO?", YEL, 1.0);
-  o += label(540, 900, "E VOCÊ? SOBREVIVERIA?", MAG, 52, 0, pop(tl, 3.2, .45));
+  o += label(540, 780, "E VOCÊ? SOBREVIVERIA?", MAG, 52, 0, pop(tl, 1.8, .45));
   return o;
 }
 
 const SCENES = [
-  { a: 0, b: 3, bg: "night", fn: sA }, { a: 3, b: 6, bg: "space", fn: sB }, { a: 6, b: 10, bg: "cyan", fn: sC },
-  { a: 10, b: 16, bg: "space", fn: sD }, { a: 16, b: 23, bg: "ocean", fn: sE }, { a: 23, b: 28, bg: "forest", fn: sF },
-  { a: 28, b: 33, bg: "purple", fn: sG }, { a: 33, b: 40, bg: "cyan", fn: sH }, { a: 40, b: 46, bg: "cyan", fn: sI },
-  { a: 46, b: 52, bg: "warm", fn: sJ },
+  { a: 0, b: 3.4, bg: "night", fn: sA }, { a: 3.4, b: 5.9, bg: "space", fn: sB }, { a: 5.9, b: 10.3, bg: "cyan", fn: sC },
+  { a: 10.3, b: 16.9, bg: "space", fn: sD }, { a: 16.9, b: 27.9, bg: "ocean", fn: sE }, { a: 27.9, b: 32.2, bg: "forest", fn: sF },
+  { a: 32.2, b: 37.6, bg: "purple", fn: sG }, { a: 37.6, b: 44.2, bg: "cyan", fn: sH }, { a: 44.2, b: 49.8, bg: "cyan", fn: sI },
+  { a: 49.8, b: 55, bg: "warm", fn: sJ },
 ];
 
-function wrap(s, max = 24) {
+function wrap(s, max = 28) {
   const w = s.split(" "), out = []; let cur = "";
   for (const x of w) { if ((cur + " " + x).trim().length > max && cur) { out.push(cur); cur = x; } else cur = (cur + " " + x).trim(); }
   if (cur) out.push(cur);
@@ -294,7 +295,7 @@ function captionSvg(t) {
   const c = CAPTIONS.find(c => t >= c.a && t < c.b); if (!c) return "";
   const p = easeOut(prog(t, c.a, .2)), lines = wrap(c.text);
   const st = 'stroke="#090A4E" stroke-width="16" stroke-linejoin="round" paint-order="stroke"';
-  return `<g opacity="${f(p)}" transform="translate(0 ${f((1 - p) * 30)})">` + lines.map((l, i) => txt(540, 1545 + i * 72, l, 60, "#fff", "middle", st)).join("") + "</g>";
+  return `<g opacity="${f(p)}" transform="translate(0 ${f((1 - p) * 30)})">` + lines.map((l, i) => txt(540, 1545 + i * 66, l, 54, "#fff", "middle", st)).join("") + "</g>";
 }
 
 function defs() {
@@ -310,7 +311,7 @@ function frame(t) {
   let o = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" font-family="${FONT}">${defs()}<rect width="${W}" height="${H}" fill="url(#bg_${sc.bg})"/>`;
   o += particles(t, PCOL[sc.bg]);
   o += `<g opacity="${f(.15 + .85 * e)}" transform="translate(540 960) scale(${z.toFixed(3)}) translate(-540 -960)">${sc.fn(tl, t)}</g>`;
-  if (t >= 8.6 && t < 28) o += hud(hudVals(t), easeOut(prog(t, 8.6, .5)) * (1 - prog(t, 27.6, .4)));
+  if (t >= 8.6 && t < 32.2) o += hud(hudVals(t), easeOut(prog(t, 8.6, .5)) * (1 - prog(t, 31.7, .4)));
   return o + captionSvg(t) + "</svg>";
 }
 function render(t) { document.getElementById("stage").innerHTML = frame(t); }

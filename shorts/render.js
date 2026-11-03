@@ -32,7 +32,8 @@ function writeSrt(file) {
     const fps = Number(rest[0] || 30), out = path.join(dir, 'nerd-vs-apocalipse-shorts.mp4');
     writeSrt(path.join(dir, 'nerd-vs-apocalipse-shorts.srt'));
     const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-i', '-',
-      '-f', 'lavfi', '-i', 'anullsrc=r=44100:cl=stereo', '-shortest',
+      ...(fs.existsSync(path.join(dir, 'audio', 'narracao.wav')) ? ['-i', path.join(dir, 'audio', 'narracao.wav')] : ['-f', 'lavfi', '-i', 'anullsrc=r=44100:cl=stereo']),
+      '-map', '0:v', '-map', '1:a', '-shortest',
       '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', '-preset', 'medium', '-movflags', '+faststart', '-c:a', 'aac', '-b:a', '128k', out],
       { stdio: ['pipe', 'inherit', 'inherit'] });
     const total = Math.round(DURATION * fps), t0 = Date.now();
