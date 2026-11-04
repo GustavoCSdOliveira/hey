@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nerd vs. Apocalipse (Shorts)</title>
+<style>
+  html,body{margin:0;background:#090A4E;height:100%}
+  #stage{width:1080px;height:1920px;transform-origin:0 0}
+  #stage svg{display:block}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script src="captions.js"></script>
+<script src="animation.js"></script>
+<script>
+  // Prévia ao abrir no navegador: reproduz em tempo real e ajusta à janela. ?t=12.5 mostra um instante fixo.
+  const q = new URLSearchParams(location.search);
+  const fit = () => { const k = Math.min(innerWidth / 1080, innerHeight / 1920); document.getElementById('stage').style.transform = 'scale(' + k + ')'; };
+  fit(); addEventListener('resize', fit);
+  if (q.has('t')) render(parseFloat(q.get('t')));
+  else if (!q.has('render')) { const t0 = performance.now(); (function loop(){ const t = ((performance.now() - t0) / 1000) % DURATION; render(t); requestAnimationFrame(loop); })(); }
+</script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+[
+ {
+  "n": 1,
+  "ato": "Gancho",
+  "t": "0:00",
+  "dur": 5,
+  "narr": "Você já ficou dez minutos sem internet e sentiu o chão sumir?",
+  "vis": "Téo, nosso nerd, no sofá, centralizado e pequeno no quadro, cercado de espaço vazio. O ícone de Wi-Fi na tela vira um X vermelho brasa #C9351E com pulso de alerta. Partículas ciano flutuando."
+ },
+ {
+  "n": 2,
+  "ato": "Gancho",
+  "t": "0:05",
+  "dur": 7,
+  "narr": "Agora imagine sem internet, sem luz, sem água na torneira e sem entrega de pizza. Para sempre.",
+  "vis": "Tela dividida em 3 painéis verticais com divisórias brancas finas. Painel 1: lâmpada apaga. Painel 2: torneira solta uma gota e seca. Painel 3: caixa de pizza vazia. Um rótulo por painel, em caixa colorida."
+ },
+ {
+  "n": 3,
+  "ato": "Gancho",
+  "t": "0:12",
+  "dur": 8,
+  "narr": "A pergunta é honesta: o nerd, aquele que sabe tudo de ficção científica, jogos e ciência, sobreviveria ao apocalipse?",
+  "vis": "Zoom out contínuo até a Terra azul. Título aparece em caixa alta, bold, alinhado à esquerda no rodapé: NERD vs. APOCALIPSE. Subtítulo menor com espaçamento largo: ELE SOBREVIVE?"
+ },
+ {
+  "n": 4,
+  "ato": "Gancho",
+  "t": "0:20",
+  "dur": 5,
+  "narr": "Spoiler: a resposta tem plot twist.",
+  "vis": "Corte seco. Téo olha para a câmera, só olhos (círculo branco + pupila). Overshoot na entrada do texto SPOILER."
+ },
+ {
+  "n": 5,
+  "ato": "Ato 1: A ficha do personagem",
+  "t": "0:25",
+  "dur": 10,
+  "narr": "Conheça o Téo. Ele leu trezentas wikis, zerou quarenta jogos de sobrevivência e tem opinião forte sobre qual é a melhor saga de fantasia.",
+  "vis": "Ficha de personagem estilo RPG. Téo no centro (pele pêssego #F1AF64, moletom magenta #D12686 com sombra roxa #46068F, óculos redondos). Rótulos saem em cascata com pequeno atraso: LEU 300 WIKIS, ZEROU 40 JOGOS."
+ },
+ {
+  "n": 6,
+  "ato": "Ato 1: A ficha do personagem",
+  "t": "0:35",
+  "dur": 6,
+  "narr": "Pontos fortes: curiosidade obsessiva, paciência para tentar de novo e uma habilidade rara. Ler o manual.",
+  "vis": "Três círculos brancos numerados (1, 2, 3), um rótulo por item. O número 3 ganha halo amarelo #F2CB26. Um manual de instruções gigante abre e brilha."
+ },
+ {
+  "n": 7,
+  "ato": "Ato 1: A ficha do personagem",
+  "t": "0:41",
+  "dur": 7,
+  "narr": "Pontos fracos: condicionamento físico de planta de apartamento e mãos mais acostumadas ao teclado do que à enxada.",
+  "vis": "Mesmos 3 círculos, agora em laranja. Téo tenta levantar um galão d'água e faz squash and stretch. Ele treme. Uma planta de vaso ao lado parece mais forte que ele."
+ },
+ {
+  "n": 8,
+  "ato": "Ato 1: A ficha do personagem",
+  "t": "0:48",
+  "dur": 7,
+  "narr": "Ele começa com quatro barras de status: água, comida, energia e moral. Vamos ver quanto tempo elas duram.",
+  "vis": "HUD de videogame no canto inferior direito: 4 barras de progresso pequenas com rótulo (ÁGUA, COMIDA, ENERGIA, MORAL), todas cheias. Barras em ciano luz, laranja âmbar, amarelo e verde menta."
+ },
+ {
+  "n": 9,
+  "ato": "Ato 2: Dia 1, o apagão",
+  "t": "0:55",
+  "dur": 5,
+  "narr": "Dia 1. A rede elétrica cai e não volta.",
+  "vis": "Vista aérea de uma cidade em tons de azul. As luzes se apagam em efeito dominó, da esquerda para a direita (cascata em sequência). Só sobram pontos amarelos aqui e ali."
+ },
+ {
+  "n": 10,
+  "ato": "Ato 2: Dia 1, o apagão",
+  "t": "1:00",
+  "dur": 6,
+  "narr": "Téo sorri. Ele tem notebook, power bank e um plano genial: painéis solares no telhado.",
+  "vis": "Close em Téo com círculo de cor sólida atrás. O sol aparece com halo e rim light. Painéis solares azul royal #1587F0 brilham com reflexo especular."
+ },
+ {
+  "n": 11,
+  "ato": "Ato 2: Dia 1, o apagão",
+  "t": "1:06",
+  "dur": 10,
+  "narr": "Só que painéis ligados à rede costumam desligar sozinhos quando ela cai, por segurança. Sem um sistema preparado para isso, o painel vira enfeite.",
+  "vis": "Diagrama sobre azul noite, blocos e setas: SOL → PAINEL → INVERSOR → X. A seta para a casa vira um X vermelho. Fala em rótulo curto: SEM REDE, SEM ENERGIA."
+ },
+ {
+  "n": 12,
+  "ato": "Ato 2: Dia 1, o apagão",
+  "t": "1:16",
+  "dur": 8,
+  "narr": "Lição número um: ter tecnologia não é o mesmo que ter tecnologia que funciona sem o resto do mundo.",
+  "vis": "O notebook de Téo mostra a barra de bateria caindo. A barra ENERGIA do HUD cai até metade, tremendo. Um relógio contando as horas aparece no canto superior esquerdo."
+ },
+ {
+  "n": 13,
+  "ato": "Ato 3: Água, o primeiro chefão",
+  "t": "1:24",
+  "dur": 7,
+  "narr": "Existe uma regra de bolso, aproximada: três minutos sem ar, três dias sem água, três semanas sem comida.",
+  "vis": "Três círculos brancos numerados, cada um com uma ilustração simples (pulmão, gota, prato). Rótulos: 3 MINUTOS, 3 DIAS, 3 SEMANAS. Animação em cascata com overshoot."
+ },
+ {
+  "n": 14,
+  "ato": "Ato 3: Água, o primeiro chefão",
+  "t": "1:31",
+  "dur": 5,
+  "narr": "A água é o primeiro chefão. Téo sabe que precisa purificar. Em teoria.",
+  "vis": "Rio azul-esverdeado. Lupa (círculo com borda branca) isola uma gota: micróbios verde menta com pontos amarelos, bordas irregulares e flagelos ondulantes (inimigos orgânicos)."
+ },
+ {
+  "n": 15,
+  "ato": "Ato 3: Água, o primeiro chefão",
+  "t": "1:36",
+  "dur": 10,
+  "narr": "Ele sabe que ferver a água mata a maior parte dos micróbios. O problema é que fervura exige fogo, e fogo exige lenha seca e prática.",
+  "vis": "Téo ajoelhado sobre um monte de gravetos. Chama aparece em camadas de círculos amarelo → laranja → vermelho. Mas apaga em poof. Squash and stretch no desânimo."
+ },
+ {
+  "n": 16,
+  "ato": "Ato 3: Água, o primeiro chefão",
+  "t": "1:46",
+  "dur": 7,
+  "narr": "Ele tenta acender o fogo como viu em tutoriais. Uma vez. Duas. Quatorze. Na décima quarta, funciona.",
+  "vis": "Contador de tentativas em caixa colorida no canto: 1, 2, 3 ... 14. Montagem de falhas em cortes rápidos. No 14, explosão de energia: círculos sobrepostos e faixas brancas de movimento. Téo comemora com joinha."
+ },
+ {
+  "n": 17,
+  "ato": "Ato 3: Água, o primeiro chefão",
+  "t": "1:53",
+  "dur": 5,
+  "narr": "Moral da história: nerd não desiste, nerd debuga. Ponto para a persistência.",
+  "vis": "A barra ÁGUA volta ao cheio, com brilho. Chip de PONTO em verde menta sobe da barra. A panela ferve, vapor em partículas ciano claro."
+ },
+ {
+  "n": 18,
+  "ato": "Ato 4: Comida e a teoria que não alimenta",
+  "t": "1:58",
+  "dur": 5,
+  "narr": "Semana dois. A comida enlatada acaba.",
+  "vis": "Despensa escura em tons de verde-azulado. Latas rolam e batem em um prato vazio. A barra COMIDA cai para quase zero, com alerta pulsando."
+ },
+ {
+  "n": 19,
+  "ato": "Ato 4: Comida e a teoria que não alimenta",
+  "t": "2:03",
+  "dur": 8,
+  "narr": "Téo conhece todas as plantas comestíveis. Do Minecraft. Na vida real, errar o cogumelo é um problema sem ponto de salvamento.",
+  "vis": "Cogumelos coloridos em plano único, rótulo ? em magenta. Um deles tem halo vermelho de perigo. Contraste entre o pixel art do jogo (mini balão) e o mundo real vetorial."
+ },
+ {
+  "n": 20,
+  "ato": "Ato 4: Comida e a teoria que não alimenta",
+  "t": "2:11",
+  "dur": 8,
+  "narr": "Plantar também não é instantâneo. Uma horta leva semanas até render, e o primeiro ciclo de quase todo iniciante dá errado.",
+  "vis": "Linha do tempo de corte lateral: solo no terço inferior, broto crescendo da esquerda para a direita. Rótulos de semanas. No fim, o broto murcha. Parallax: nuvens lentas ao fundo."
+ },
+ {
+  "n": 21,
+  "ato": "Ato 4: Comida e a teoria que não alimenta",
+  "t": "2:19",
+  "dur": 10,
+  "narr": "Mas aqui o nerd brilha: Téo monta a planilha do apocalipse, com calorias, rações por dia e a rota até a horta mais próxima.",
+  "vis": "Planilha estilizada em azul royal, células como círculos e retângulos arredondados. Linhas se preenchem em cascata. Um mapa de rota se desenha com seta amarela até uma horta."
+ },
+ {
+  "n": 22,
+  "ato": "Ato 4: Comida e a teoria que não alimenta",
+  "t": "2:29",
+  "dur": 5,
+  "narr": "Só que planilha também não é refeição. E a moral começa a cair.",
+  "vis": "A barra MORAL desce e muda de verde menta para laranja. Téo sozinho em plano geral, minúsculo diante de uma paisagem enorme. Partículas pesadas e lentas."
+ },
+ {
+  "n": 23,
+  "ato": "Ato 5: Saber não é o mesmo que fazer",
+  "t": "2:34",
+  "dur": 8,
+  "narr": "Existe uma diferença enorme entre saber como algo funciona e conseguir fazê-lo com as mãos cansadas, com fome e sem tutorial.",
+  "vis": "Tela dividida em 2 painéis. Esquerda: AMIGO, Téo diante de um livro com cérebro brilhante. Direita: INIMIGO, Téo com as mãos tremendo diante de uma ferramenta. Divisória branca fina entre eles."
+ },
+ {
+  "n": 24,
+  "ato": "Ato 5: Saber não é o mesmo que fazer",
+  "t": "2:42",
+  "dur": 9,
+  "narr": "E o conhecimento também precisa sobreviver. A Wikipédia inteira cabe num pen drive, mas precisa de energia. Um livro de papel, não.",
+  "vis": "Dois objetos sobre fundo escuro: um HD com barra ENERGIA em zero, e um livro com halo amarelo. Rim light no livro. O HD pisca em vermelho e apaga."
+ },
+ {
+  "n": 25,
+  "ato": "Ato 5: Saber não é o mesmo que fazer",
+  "t": "2:51",
+  "dur": 5,
+  "narr": "Téo percebe o problema. Nunca foi a inteligência. Foi estar sozinho.",
+  "vis": "Close emocional sobre círculo de cor sólida. Olhos de Téo, pupilas se movendo. Uma lágrima ciano. A câmera afasta devagar e revela um ponto de luz laranja ao longe."
+ },
+ {
+  "n": 26,
+  "ato": "Ato 6: O plot twist",
+  "t": "2:56",
+  "dur": 7,
+  "narr": "Seres humanos nunca sobreviveram sozinhos. Nossa maior vantagem sempre foi cooperar e dividir o que cada um sabe.",
+  "vis": "Imagem de multidão de parede a parede: centenas de pessoas simplificadas em blocos de cor, rotações e tamanhos variados. Zoom até um pequeno grupo."
+ },
+ {
+  "n": 27,
+  "ato": "Ato 6: O plot twist",
+  "t": "3:03",
+  "dur": 8,
+  "narr": "Téo encontra a Dona Marlene, que entende de plantio, o Cabo Ricardo, que conserta qualquer coisa, e a Beatriz, enfermeira.",
+  "vis": "Quatro personagens como peças de montar arredondadas, no estilo das proteínas do complemento. Cada uma entra com overshoot e um rótulo em caixa colorida: HORTA, CONSERTO, SAÚDE, ???."
+ },
+ {
+  "n": 28,
+  "ato": "Ato 6: O plot twist",
+  "t": "3:11",
+  "dur": 9,
+  "narr": "E o nerd? Ele vira a peça que faltava. Documenta, calcula, organiza turnos, constrói filtro de água e faz o rádio funcionar.",
+  "vis": "As peças se encaixam com squash and stretch e trocam de cor ao ativar. Téo monta um filtro (areia, carvão, cascalho) em corte lateral. Rótulo da peça de Téo vira: SISTEMAS."
+ },
+ {
+  "n": 29,
+  "ato": "Ato 6: O plot twist",
+  "t": "3:20",
+  "dur": 6,
+  "narr": "Sozinho, o nerd tem uma chance ruim. Em grupo, ele vira um multiplicador de força.",
+  "vis": "Duas barras lado a lado: SOZINHO (curta, laranja) e EM GRUPO (longa, verde menta). Selo pequeno no canto: ESTIMATIVA DO ROTEIRO, NÃO É ESTUDO. Barras sobem com ease-in-out."
+ },
+ {
+  "n": 30,
+  "ato": "Ato 7: O veredito",
+  "t": "3:26",
+  "dur": 10,
+  "narr": "Então, o nerd sobrevive ao apocalipse? Sim, se trocar a pergunta. Em vez de o que eu sei, o que a gente consegue fazer?",
+  "vis": "Téo planta uma muda junto com os outros. O sol nasce com halo suave. Parallax em 3 planos: árvores ao fundo, grupo no meio, folhas em primeiro plano."
+ },
+ {
+  "n": 31,
+  "ato": "Ato 7: O veredito",
+  "t": "3:36",
+  "dur": 10,
+  "narr": "Três dicas para hoje: aprenda uma habilidade com as mãos, acenda um fogo de verdade, e faça amigos que saibam o que você não sabe.",
+  "vis": "Três círculos brancos numerados com ícones: ferramenta, chama, dois bonecos de mãos dadas. Cada um surge em cascata com overshoot."
+ },
+ {
+  "n": 32,
+  "ato": "Ato 7: O veredito",
+  "t": "3:46",
+  "dur": 5,
+  "narr": "E se o mundo acabasse amanhã? Você sabe acender um fogo?",
+  "vis": "Close final em Téo sorrindo, com a chama na mão iluminando o rosto. Corte para tela final: título do canal, rótulo curto de ação e fundo ciano com partículas."
+ }
+]
