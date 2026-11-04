@@ -1,32 +1,22 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {MeshBackground} from '../components/MeshBackground';
-import {Camera} from '../components/Camera';
-import {Machine, Bucket} from '../components/Machine';
-import {SeedStream} from '../components/Seeds';
+import {Stage3D} from '../components3d/Stage3D';
+import {Discharge3D} from './Discharge3D';
 import {AppleTitle} from '../components/AppleTitle';
 import {StepChip} from '../components/StepChip';
-import {tween, useMs} from '../lib/motion';
+import {useMs} from '../lib/motion';
 
-/** 9480–13500 ms · Descarga: balde entra (0–0,7 s), calha gira (0,5 s), fluxo vermelho começa (1 s). */
+/** 9480–13500 ms · Descarga: alavanca abre a calha (≈0,5 s), fluxo vermelho enche o balde. */
 export const S4Discharge: React.FC = () => {
   const ms = useMs();
   return (
     <AbsoluteFill>
       <MeshBackground tone="light" />
-      <Camera from={{s: 1.0, x: 0, y: 120, rx: 0, ry: -6}} to={{s: 1.12, x: 0, y: 160, rx: 3, ry: 4}} endMs={4020}>
-        <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center'}}>
-          <div style={{position: 'relative'}}>
-            <Machine led={1} chute={tween(ms, 500, 1100)} />
-            <div style={{position: 'absolute', left: 190, top: 560, opacity: tween(ms, 0, 700), transform: `translateY(${(1 - tween(ms, 0, 700)) * 120}px)`}}>
-              <Bucket width={380} fill={tween(ms, 1000, 4000, 0.05, 0.4)} />
-            </div>
-            <div style={{position: 'absolute', inset: 0}}>
-              <SeedStream x0={300} y0={300} x1={380} y1={560} ms={ms} on={1000} off={3800} coat={1} n={120} size={8} spread={20} />
-            </div>
-          </div>
-        </AbsoluteFill>
-      </Camera>
+      <Stage3D from={{p: [4.5, 3.6, 12], l: [0, 2.2, 0.5]}} to={{p: [2.0, 3.0, 9.0], l: [-0.2, 2.0, 0.8]}} endMs={4020}>
+        <Discharge3D ms={ms} flowOn={1000} flowOff={3800} fill={[[0, 0.05], [4000, 0.4]]}
+          bucket={[[0, [3.2, 0.9, 3.2]], [700, [-0.3, 1.1, 1.75]], [4020, [-0.3, 1.1, 1.75]]]} tilt={[[0, 0], [4020, 0]]} />
+      </Stage3D>
       <AbsoluteFill style={{alignItems: 'center', paddingTop: 170}}>
         <AppleTitle text="Descarregue." color="#1d1d1f" size={150} startMs={150} />
       </AbsoluteFill>

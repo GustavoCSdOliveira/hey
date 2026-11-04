@@ -1,31 +1,23 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {MeshBackground} from '../components/MeshBackground';
-import {Camera, Focus} from '../components/Camera';
-import {SeedStream} from '../components/Seeds';
+import {Stage3D} from '../components3d/Stage3D';
+import {Discharge3D} from './Discharge3D';
 import {AppleTitle} from '../components/AppleTitle';
 import {tween, useMs} from '../lib/motion';
 
-/** 13500–17000 ms · Macro extremo (close do vídeo, 13,5 s): calha inox + fluxo. Rack focus: calha → sementes. */
+/** 13500–17000 ms · Macro extremo da calha e do fluxo. Rack focus: início desfocado → nítido nas sementes. */
 export const S5Macro: React.FC = () => {
   const ms = useMs();
-  const chuteBlur = tween(ms, 600, 1500, 0, 14);
-  const streamBlur = tween(ms, 0, 1000, 14, 0);
   return (
     <AbsoluteFill>
       <MeshBackground tone="dark" />
-      <Camera from={{s: 1.5, x: -60, y: -60, rx: 10, ry: -14}} to={{s: 1.9, x: -120, y: 0, rx: 4, ry: -6}} endMs={3500}>
-        <Focus blur={chuteBlur}>
-          <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center'}}>
-            <div style={{width: 760, height: 520, transform: 'skewY(-14deg)', borderRadius: 24,
-              background: 'linear-gradient(135deg,#f2f2f7 0%,#8e8e93 40%,#3a3a3c 60%,#c7c7cc 100%)',
-              boxShadow: 'inset 0 2px 0 rgba(255,255,255,0.8), 0 60px 120px rgba(0,0,0,0.6)'}} />
-          </AbsoluteFill>
-        </Focus>
-        <Focus blur={streamBlur}>
-          <SeedStream x0={440} y0={700} x1={560} y1={1250} ms={ms} on={0} off={3200} coat={1} n={160} size={14} spread={50} />
-        </Focus>
-      </Camera>
+      <AbsoluteFill style={{filter: `blur(${tween(ms, 0, 900, 16, 0)}px)`}}>
+        <Stage3D from={{p: [-3.2, 3.0, 8.2], l: [-0.5, 2.0, 1.5]}} to={{p: [-1.8, 2.5, 6.4], l: [-0.4, 1.8, 1.6]}} endMs={3500} fov={34} envIntensity={1.1}>
+          <Discharge3D ms={ms + 2400} flowOn={0} flowOff={9000} fill={[[0, 0.3], [3500, 0.55]]}
+            bucket={[[0, [-0.3, 1.1, 1.75]], [3500, [-0.3, 1.1, 1.75]]]} tilt={[[0, 0], [3500, 0]]} />
+        </Stage3D>
+      </AbsoluteFill>
       <AbsoluteFill style={{alignItems: 'center', justifyContent: 'flex-end', paddingBottom: 220}}>
         <AppleTitle text="Cada semente. Uniforme." size={110} startMs={900} fromWeight={100} toWeight={600} />
       </AbsoluteFill>

@@ -25,12 +25,10 @@ Não há fala transcrevível. Há apenas ruído do motor e do fluxo de sementes 
 - Mesh gradients metálicos, vidro fosco (`backdrop-filter: blur(48px)`), borda interna de 1 px, vinheta e grão.
 - Fonte: pilha SF Pro → Inter → system-ui (SF não é redistribuível; em Mac renderiza SF de verdade).
 
-## Decisões que preciso de você
-1. **Realismo:** o código gera um *product render* vetorial/CSS estilizado, não fotorrealismo. Para fotorrealismo real, o caminho seria usar os frames do vídeo como textura/composição (rotoscopia) ou 3D com three.js/GLB.
-2. **Cor:** UI em cinza/prata/branco/preto; a máquina virou grafite (a real é verde). As únicas cores são o vermelho das sementes e o LED. Quer manter o verde da marca?
-3. **Mãos:** omitidas de propósito (estética Apple de produto). Dá para incluir clipes do original em vidro fosco.
-4. **Resolução:** 1080×1920 (vertical) a 30 fps. Quer 60 fps, igual ao original?
-5. **Áudio:** manter o original a 35% ou trilha/foley sintético?
+## Decisões tomadas (v2)
+- **Modelo 3D real** (three.js via `@remotion/three`): máquina procedural nas cores originais (corpo cinza, tambor verde, calha inox, painel preto, botão vermelho, anel LED verde, balde verde, sementes vermelhas).
+- **Mãos mantidas:** luvas pretas de nitrilo + manga branca, em 3D, animadas por keyframes em cada cena.
+- Cenário claro/escuro alternado; UI de vidro fosco por cima.
 
 ## Pipeline
 ```bash
@@ -39,7 +37,7 @@ npm run studio      # edição ao vivo
 npm run preview     # 357×640, 15 fps, CRF 34 -> out/preview.mp4
 npm run final       # 1080×1920 -> FFmpeg H.264 CRF17 -> out/final_1080p.mp4
 ```
-Se o Chromium não for baixado, use `BROWSER_EXE=/caminho/chromium`.
+Sem GPU o WebGL roda por software (`--gl=swangle`, já no `remotion.config.ts`): render lento. Se o Chromium não for baixado, use `BROWSER_EXE=/caminho/chromium`.
 
 ## Estado
-Scaffold completo, typecheck OK, 7 cenas validadas por stills. Falta: refinar realismo (aguardando decisão 1), balde com sementes em vez de preenchimento chapado, e rodar o preview em vídeo.
+7 cenas em 3D validadas por stills. Pendências conhecidas: mãos ainda blocky (dedos rígidos), monte de sementes no balde ralo, cena 3 com sombra escura atrás da tampa, alavanca/mãos esquerdas a refinar, preview em vídeo ainda não rodado.

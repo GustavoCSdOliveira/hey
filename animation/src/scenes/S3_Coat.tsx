@@ -1,37 +1,34 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {MeshBackground} from '../components/MeshBackground';
-import {Camera, Focus} from '../components/Camera';
-import {SeedField} from '../components/Seeds';
+import {Stage3D} from '../components3d/Stage3D';
+import {Machine3D, DRUM} from '../components3d/Machine3D';
+import {Hand3D} from '../components3d/Hand3D';
+import {SeedInstances, drumSeeds} from '../components3d/SeedInstances';
 import {AppleTitle} from '../components/AppleTitle';
 import {StepChip} from '../components/StepChip';
-import {C} from '../lib/theme';
+import {path3 as path} from '../lib/path';
 import {tween, useMs} from '../lib/motion';
 
-/** 5970–9480 ms · Tratamento: macro top-down no tambor, gota vermelha cai, sementes tingem. Rack focus. */
+/** 5970–9480 ms · Tratamento: câmera desce para vista de topo; gota vermelha do frasco tinge as sementes. Rack focus. */
 export const S3Coat: React.FC = () => {
   const ms = useMs();
-  const coat = tween(ms, 700, 3200);
-  const drop = tween(ms, 300, 800);
-  const blurBG = tween(ms, 0, 900, 22, 0);
+  const coat = tween(ms, 800, 3200);
+  const drop = tween(ms, 350, 800);
+  const h = path(ms, [[0, [3.2, 4.9, 0.3]], [500, [1.55, 4.75, 0.3]], [2200, [1.55, 4.75, 0.3]], [3000, [3.6, 5.2, 0.3]]]);
+  const blur = tween(ms, 0, 900, 18, 0);
   return (
     <AbsoluteFill>
       <MeshBackground tone="dark" />
-      <Camera from={{s: 0.9, x: 0, y: 40, rx: 22, ry: 0}} to={{s: 1.25, x: 0, y: 40, rx: 0, ry: 0}} endMs={3510}>
-        <Focus blur={blurBG}>
-          <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center'}}>
-            <div style={{position: 'relative', width: 820, height: 820, borderRadius: '50%', overflow: 'hidden',
-              background: 'radial-gradient(circle at 35% 30%, #3a3a3c, #0b0b0d 70%)',
-              boxShadow: 'inset 0 0 0 10px #8e8e93, inset 0 0 0 14px rgba(255,255,255,0.25), 0 60px 140px rgba(0,0,0,0.6)'}}>
-              <div style={{position: 'absolute', left: 20, top: 20}}>
-                <SeedField size={780} ms={ms} coat={coat} n={420} />
-              </div>
-              <div style={{position: 'absolute', left: '50%', top: `${tween(ms, 300, 800, -10, 50)}%`, width: 26, height: 40, marginLeft: -13,
-                borderRadius: '50% 50% 50% 50% / 62% 62% 38% 38%', background: C.coated, opacity: drop * (1 - tween(ms, 780, 820)), boxShadow: `0 0 30px ${C.coated}`}} />
-            </div>
-          </AbsoluteFill>
-        </Focus>
-      </Camera>
+      <AbsoluteFill style={{filter: `blur(${blur}px)`}}>
+        <Stage3D from={{p: [3.5, 7.5, 8.5], l: [DRUM.x, 3.4, 0]}} to={{p: [-0.3, 10.5, 1.4], l: [DRUM.x, 3.4, -0.1]}} endMs={3510} envIntensity={1.1} shadow={0}>
+          <Machine3D led={1} />
+          <SeedInstances seeds={drumSeeds(ms, [DRUM.x, 3.3, DRUM.z], 0.9, coat, 800)} size={0.06} />
+          <Hand3D position={h} rotation={[0, 0, Math.PI / 2]} curl={0.7} pinch={0.9} />
+          <mesh position={[1.0, 5.0, 0.3]} rotation={[0, 0, 0.5]}><cylinderGeometry args={[0.08, 0.08, 0.4, 16]} /><meshPhysicalMaterial color="#d33" transparent opacity={0.7} roughness={0.1} /></mesh>
+          {drop < 1 && drop > 0 && <mesh position={[DRUM.x + 0.1, 4.6 - drop * 1.3, 0.1]}><sphereGeometry args={[0.07, 16, 12]} /><meshStandardMaterial color="#e11" emissive="#a00" emissiveIntensity={0.8} /></mesh>}
+        </Stage3D>
+      </AbsoluteFill>
       <AbsoluteFill style={{alignItems: 'center', paddingTop: 170}}>
         <AppleTitle text="Cubra." size={170} startMs={150} />
       </AbsoluteFill>
