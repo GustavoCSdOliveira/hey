@@ -1,0 +1,25 @@
+{
+  "voice": "pt_BR-faber-medium",
+  "length_scale": 1.07,
+  "clips": [
+    {"id": "a1", "scene": 1, "text": "E se o Sol sumisse...", "gap_after": 0.08},
+    {"id": "a2", "scene": 1, "text": "agora?", "gap_after": 0.45},
+    {"id": "b1", "scene": 2, "text": "Por oito minutos...", "gap_after": 0.3},
+    {"id": "b2", "scene": 2, "text": "nada.", "gap_after": 0.35},
+    {"id": "c1", "scene": 3, "text": "A luz do Sol leva oito minutos e vinte segundos pra chegar aqui.", "gap_after": 0.2},
+    {"id": "c2", "scene": 3, "text": "Você continuaria vendo uma estrela que já não existe.", "gap_after": 0.35},
+    {"id": "d1", "scene": 4, "text": "E a gravidade viaja na mesma velocidade.", "gap_after": 0.2},
+    {"id": "d2", "scene": 4, "text": "A Terra seguiria girando em volta...", "gap_after": 0.15},
+    {"id": "d3", "scene": 4, "text": "de um fantasma.", "gap_after": 0.3},
+    {"id": "e1", "scene": 5, "text": "Até que...", "gap_after": 0.55},
+    {"id": "e2", "scene": 5, "text": "escuridão.", "gap_after": 0.3},
+    {"id": "e3", "scene": 5, "text": "A Terra se solta, e dispara em linha reta pelo espaço.", "gap_after": 0.35},
+    {"id": "f1", "scene": 6, "text": "Mas Júpiter continuaria brilhando no céu por mais de uma hora.", "gap_after": 0.35},
+    {"id": "g1", "scene": 7, "text": "Em uma semana: dezoito graus negativos.", "gap_after": 0.25},
+    {"id": "g2", "scene": 7, "text": "Em um ano: setenta e três.", "gap_after": 0.35},
+    {"id": "h1", "scene": 8, "text": "Lá no fundo do oceano, micróbios ao redor de vulcões submarinos continuariam vivos.", "gap_after": 0.4},
+    {"id": "i1", "scene": 9, "text": "E o mais estranho?", "gap_after": 0.25},
+    {"id": "i2", "scene": 9, "text": "Se isso aconteceu há cinco minutos...", "gap_after": 0.15},
+    {"id": "i3", "scene": 9, "text": "você ainda não sabe.", "gap_after": 0.6}
+  ]
+}
