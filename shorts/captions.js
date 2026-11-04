@@ -16,5 +16,22 @@ const CAPTIONS = [
   { a: 50.0, b: 51.5, text: "Você sabe acender um fogo?" },
   { a: 51.6, b: 55.0, text: "E você, sobreviveria?" },
 ];
+const CAPTIONS_EN = [
+  { a: 0.3, b: 3.4, text: "No internet, no power, no water..." },
+  { a: 3.5, b: 5.9, text: "Could a nerd survive the apocalypse?" },
+  { a: 5.95, b: 10.1, text: "Teo read 300 wikis and beat 40 survival games." },
+  { a: 10.2, b: 14.3, text: "Day 1: the power grid goes down and doesn't come back." },
+  { a: 14.35, b: 17.2, text: "Grid-tied solar panels? They shut off too." },
+  { a: 17.35, b: 23.2, text: "Fire to boil the water? Attempt 1, 2, 3..." },
+  { a: 23.3, b: 28.0, text: "On the 14th, it works. Nerds don't quit, they debug." },
+  { a: 28.1, b: 32.2, text: "Week 2: the food runs out, and a garden takes weeks." },
+  { a: 32.3, b: 36.2, text: "The problem was never intelligence. It was being alone." },
+  { a: 37.7, b: 40.6, text: "In a group, the nerd becomes the missing piece." },
+  { a: 40.8, b: 44.0, text: "He documents, calculates, fixes and teaches." },
+  { a: 44.3, b: 46.2, text: "Alone, the odds are bad." },
+  { a: 46.4, b: 49.7, text: "In a group, he becomes a force multiplier." },
+  { a: 49.8, b: 51.5, text: "Do you know how to start a fire?" },
+  { a: 51.6, b: 55.0, text: "And you, would you survive?" },
+];
 const DURATION = 55;
-if (typeof module !== "undefined") module.exports = { CAPTIONS, DURATION };
+if (typeof module !== "undefined") module.exports = { CAPTIONS, CAPTIONS_EN, DURATION };

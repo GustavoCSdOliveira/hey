@@ -1,5 +1,19 @@
 // Nerd vs. Apocalipse, versão Shorts (1080x1920, 52 s). frame(t) devolve o SVG do instante t.
 const W = 1080, H = 1920;
+const LANG = (typeof location !== "undefined" && new URLSearchParams(location.search).get("lang")) || "pt";
+const EN = {
+  "SEM SINAL": "NO SIGNAL", "APOCALIPSE": "APOCALYPSE", "ELE SOBREVIVE?": "CAN HE SURVIVE?",
+  "LEU 300 WIKIS": "READ 300 WIKIS", "ZEROU 40 JOGOS": "BEAT 40 GAMES",
+  "ÁGUA": "WATER", "COMIDA": "FOOD", "ENERGIA": "ENERGY", "MORAL": "MORALE",
+  "DIA 1": "DAY 1", "SEM REDE": "NO GRID", "SOL": "SUN", "PAINEL": "PANEL", "INVERSOR": "INVERTER", "CASA": "HOME",
+  "SEM REDE, SEM ENERGIA": "NO GRID, NO POWER", "TENTATIVA": "ATTEMPT", "+1 PERSISTÊNCIA": "+1 PERSISTENCE",
+  "SEMANA 2": "WEEK 2", "SEM 1": "WK 1", "SEM 3": "WK 3", "SEM 6": "WK 6", "SEM 9": "WK 9", "A HORTA DEMORA": "GARDENS TAKE TIME",
+  "A EQUIPE": "THE TEAM", "SISTEMAS": "SYSTEMS", "HORTA": "GARDEN", "CONSERTO": "REPAIRS", "SAÚDE": "HEALTH",
+  "ESTIMATIVA DO ROTEIRO, NÃO É ESTUDO": "SCRIPT ESTIMATE, NOT A STUDY", "SOZINHO": "ALONE", "EM GRUPO": "IN A GROUP",
+  "VOCÊ SABE": "CAN YOU", "ACENDER": "START", "UM FOGO?": "A FIRE?", "E VOCÊ? SOBREVIVERIA?": "WOULD YOU SURVIVE?",
+};
+const tr = s => (LANG === "en" && EN[s]) || s;
+const CAP = () => (LANG === "en" ? CAPTIONS_EN : CAPTIONS);
 const CY = "#16F1FA", CYL = "#4DF7F9", CYW = "#91FCF9", NIGHT = "#090A4E", ULTRA = "#1620C1", ROYAL = "#1587F0";
 const PURP = "#46068F", VIOL = "#7F1AE3", LILAC = "#DECEE0", MAG = "#D12686", ORG = "#F29E0C", PEACH = "#F1AF64";
 const MINT = "#17D985", EMBER = "#C9351E", YEL = "#F2CB26", DEEP = "#020027", DEEP2 = "#0C0245";
@@ -28,9 +42,9 @@ const circ = (x, y, r, fill, op = 1, ex = "") => `<circle cx="${f(x)}" cy="${f(y
 const rr = (x, y, w, h, r, fill, op = 1, ex = "") => `<rect x="${f(x)}" y="${f(y)}" width="${f(Math.max(0, w))}" height="${f(Math.max(0, h))}" rx="${r}" fill="${fill}" opacity="${op}" ${ex}/>`;
 const glow = (x, y, r, k, op = 1) => `<circle cx="${f(x)}" cy="${f(y)}" r="${f(r)}" fill="url(#g_${k})" opacity="${op}"/>`;
 const line = (x1, y1, x2, y2, c, w = 8, ex = "") => `<line x1="${f(x1)}" y1="${f(y1)}" x2="${f(x2)}" y2="${f(y2)}" stroke="${c}" stroke-width="${w}" stroke-linecap="round" ${ex}/>`;
-const txt = (x, y, s, size = 40, fill = "#fff", anchor = "middle", ex = "") => `<text x="${f(x)}" y="${f(y)}" font-size="${size}" fill="${fill}" text-anchor="${anchor}" font-weight="800" ${ex}>${s}</text>`;
+const txt = (x, y, s, size = 40, fill = "#fff", anchor = "middle", ex = "") => `<text x="${f(x)}" y="${f(y)}" font-size="${size}" fill="${fill}" text-anchor="${anchor}" font-weight="800" ${ex}>${tr(s)}</text>`;
 const S = (cx, cy, sc, inner, rot = 0) => (sc <= 0.001 ? "" : `<g transform="translate(${f(cx)} ${f(cy)}) rotate(${f(rot)}) scale(${sc.toFixed(3)}) translate(${-f(cx)} ${-f(cy)})">${inner}</g>`);
-const label = (cx, cy, s, fill = MAG, size = 44, rot = 0, sc = 1) => { const w = s.length * size * .74 + 56, h = size * 1.55; return S(cx, cy, sc, rr(cx - w / 2, cy - h / 2, w, h, 14, fill) + txt(cx, cy + size * .35, s, size), rot); };
+const label = (cx, cy, s, fill = MAG, size = 44, rot = 0, sc = 1) => { s = tr(s); const w = s.length * size * .74 + 56, h = size * 1.55; return S(cx, cy, sc, rr(cx - w / 2, cy - h / 2, w, h, 14, fill) + txt(cx, cy + size * .35, s, size), rot); };
 const drop = (x, y, s, c = CYL, op = 1) => `<path transform="translate(${f(x)} ${f(y)}) scale(${f(s)})" opacity="${op}" fill="${c}" d="M0,-1 C0.6,-0.2 0.9,0.2 0.9,0.5 A0.9,0.9 0 0 1 -0.9,0.5 C-0.9,0.2 -0.6,-0.2 0,-1Z"/>`;
 function flame(x, y, s, t = 0) {
   const p = "M0,-1 C0.5,-.4 0.85,0 0.72,.5 A.72,.72 0 0 1 -.72,.5 C-.85,0 -.3,-.3 0,-1Z";
@@ -292,7 +306,7 @@ function wrap(s, max = 28) {
   return out;
 }
 function captionSvg(t) {
-  const c = CAPTIONS.find(c => t >= c.a && t < c.b); if (!c) return "";
+  const c = CAP().find(c => t >= c.a && t < c.b); if (!c) return "";
   const p = easeOut(prog(t, c.a, .2)), lines = wrap(c.text);
   const st = 'stroke="#090A4E" stroke-width="16" stroke-linejoin="round" paint-order="stroke"';
   return `<g opacity="${f(p)}" transform="translate(0 ${f((1 - p) * 30)})">` + lines.map((l, i) => txt(540, 1545 + i * 66, l, 54, "#fff", "middle", st)).join("") + "</g>";

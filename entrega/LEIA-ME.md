@@ -3,6 +3,9 @@
 | Arquivo | O que é |
 |---------|---------|
 | `nerd-vs-apocalipse-shorts.mp4` | **Vídeo final** 9:16 (1080×1920), 55 s, com narração e legendas. Pronto para YouTube Shorts, Reels e TikTok |
+| `nerd-vs-apocalipse-shorts-en.mp4` | **Versão em inglês**: mesma animação, com narração, legendas e rótulos da tela em inglês |
+| `nerd-vs-apocalipse-shorts-en.srt` | Legendas em inglês |
+| `narracao-sincronizada-en.mp3` | Só a voz em inglês, alinhada ao vídeo |
 | `nerd-vs-apocalipse-shorts.srt` | Legendas (para enviar como legenda separada, se preferir) |
 | `narracao-sincronizada.mp3` | Só a voz, já posicionada no tempo do vídeo (55 s) |
 | `roteiro-e-script.md` | Roteiro, script com narração e direção de cena, notas de produção e checagem de fatos |
