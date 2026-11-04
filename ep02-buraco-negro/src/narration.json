@@ -1,0 +1,26 @@
+{
+  "voice": "pt_BR-faber-medium",
+  "length_scale": 1.05,
+  "clips": [
+    {"id": "a1", "text": "Você está caindo num buraco negro.", "gap_after": 0.25},
+    {"id": "a2", "text": "E restam poucos segundos.", "gap_after": 0.4},
+    {"id": "b1", "text": "Se ele for pequeno, do tamanho de uma cidade,", "gap_after": 0.15},
+    {"id": "b2", "text": "a gravidade nos seus pés é muito mais forte que na cabeça.", "gap_after": 0.25},
+    {"id": "b3", "text": "Você estica... estica...", "gap_after": 0.15},
+    {"id": "b4", "text": "e vira espaguete.", "gap_after": 0.35},
+    {"id": "c1", "text": "Isso tem nome: espaguetificação.", "gap_after": 0.2},
+    {"id": "c2", "text": "Sério.", "gap_after": 0.4},
+    {"id": "d1", "text": "Mas se ele for gigante, como o do centro da nossa galáxia,", "gap_after": 0.2},
+    {"id": "d2", "text": "você cruza a borda...", "gap_after": 0.3},
+    {"id": "d3", "text": "e não sente nada.", "gap_after": 0.35},
+    {"id": "e1", "text": "Só que, pra quem te vê de fora,", "gap_after": 0.15},
+    {"id": "e2", "text": "você nunca chega.", "gap_after": 0.25},
+    {"id": "e3", "text": "Fica congelado na borda, apagando devagar.", "gap_after": 0.4},
+    {"id": "f1", "text": "Lá dentro, todo caminho leva ao centro.", "gap_after": 0.2},
+    {"id": "f2", "text": "E você tem menos de um minuto até ele.", "gap_after": 0.35},
+    {"id": "g1", "text": "O que tem lá?", "gap_after": 0.5},
+    {"id": "g2", "text": "Ninguém sabe. A física quebra.", "gap_after": 0.45},
+    {"id": "h1", "text": "Pequeno ou gigante: qual você escolheria?", "gap_after": 0.25},
+    {"id": "h2", "text": "Pensa rápido, porque...", "gap_after": 0.5}
+  ]
+}
